@@ -11,6 +11,8 @@ export const metadata: Metadata = {
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageTransitionWrapper from "@/components/PageTransitionWrapper";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export default function RootLayout({
     children,
@@ -20,9 +22,13 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <Navbar />
-                {children}
-                <Footer />
+                <LanguageProvider>
+                    <Navbar />
+                    <PageTransitionWrapper>
+                        {children}
+                    </PageTransitionWrapper>
+                    <Footer />
+                </LanguageProvider>
             </body>
         </html>
     );
