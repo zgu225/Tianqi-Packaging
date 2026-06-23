@@ -4,6 +4,7 @@ import Link from "next/link";
 import FAQ from "@/components/FAQ";
 import ScrollReveal from "@/components/ScrollReveal";
 import { useLang } from "@/context/LanguageContext";
+import { allSubcategories } from "@/data/products";
 import { translations } from "@/lib/translations";
 
 const productImages = [
@@ -14,6 +15,10 @@ const productImages = [
   "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=700&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1605457867610-e990b192e6a4?w=700&auto=format&fit=crop",
 ];
+
+const featuredProductLinks = allSubcategories.slice(0, 6).map((product) => ({
+  href: `/products/${product.categorySlug}/${product.slug}`,
+}));
 
 export default function Home() {
   const { lang } = useLang();
@@ -88,7 +93,7 @@ export default function Home() {
                   <span className="text-xs font-bold text-accent uppercase tracking-widest">{product.tag}</span>
                   <h3 className="text-xl font-bold text-primary mt-1 mb-3">{product.name}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">{product.desc}</p>
-                  <Link href="/products" className="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-primary hover:text-accent transition">
+                  <Link href={featuredProductLinks[i]?.href ?? "/products"} className="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-primary hover:text-accent transition">
                     {t.products.learnMore}
                   </Link>
                 </div>
