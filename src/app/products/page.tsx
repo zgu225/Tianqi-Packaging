@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import ProductsContent from "./ProductsContent";
 
 export const metadata: Metadata = {
-  title: "Products | Tianqi Packaging — Custom Paper Boxes & Bags",
+  title: "Products | Tianqi Packaging Product Catalogue",
   description:
-    "Browse Tianqi's full range of custom paper packaging: rigid gift boxes, folding cartons, mailer boxes, paper bags, specialty shapes, and eco kraft packaging.",
+    "Browse Tianqi's custom packaging catalogue by category: boxes, paper bags, instruction manuals, cards, and inserts.",
 };
 
 export default function ProductsPage() {

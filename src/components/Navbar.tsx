@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useLang } from "@/context/LanguageContext";
+import { productCategories } from "@/data/products";
 import { translations } from "@/lib/translations";
 
 export default function Navbar() {
@@ -19,11 +20,11 @@ export default function Navbar() {
     }, []);
 
     const navLinks = [
-        { name: t.introduction, href: "/" },
-        { name: t.products, href: "/products" },
         { name: t.about, href: "/about" },
         { name: t.contact, href: "/contact" },
     ];
+
+    const textColor = isScrolled ? "text-gray-800" : "text-gray-200";
 
     const LangToggle = ({ scrolled }: { scrolled: boolean }) => (
         <div className={`flex items-center gap-0.5 rounded-full border p-0.5 ${scrolled ? "border-gray-200" : "border-white/30"}`}>
@@ -35,8 +36,8 @@ export default function Navbar() {
                         lang === l
                             ? "bg-accent text-primary"
                             : scrolled
-                            ? "text-gray-400 hover:text-gray-700"
-                            : "text-white/50 hover:text-white"
+                              ? "text-gray-400 hover:text-gray-700"
+                              : "text-white/50 hover:text-white"
                     }`}
                 >
                     {l.toUpperCase()}
@@ -52,52 +53,91 @@ export default function Navbar() {
             }`}
         >
             <div className="container mx-auto px-6 flex justify-between items-center">
-                {/* Logo */}
                 <Link href="/" className={`text-2xl font-bold tracking-tighter ${isScrolled ? "text-primary" : "text-white"}`}>
                     Tianqi<span className="text-accent">.</span>
                 </Link>
 
-                {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-6">
+                    <Link href="/" className={`text-sm font-medium transition-colors hover:text-accent ${textColor}`}>
+                        {t.introduction}
+                    </Link>
+
+                    <div className="group relative py-3">
+                        <Link href="/products" className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-accent ${textColor}`}>
+                            {t.products}
+                            <ChevronDown size={14} className="transition-transform group-hover:rotate-180" />
+                        </Link>
+                        <div className="invisible absolute left-1/2 top-full w-[720px] -translate-x-1/2 rounded-lg border border-gray-100 bg-white p-6 text-gray-900 opacity-0 shadow-2xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                            <div className="grid grid-cols-3 gap-6">
+                                {productCategories.map((category) => (
+                                    <div key={category.slug}>
+                                        <Link href={`/products#${category.slug}`} className="text-sm font-bold text-primary hover:text-accent">
+                                            {category.name}
+                                        </Link>
+                                        <div className="mt-3 space-y-2">
+                                            {category.subcategories.map((subcategory) => (
+                                                <Link
+                                                    key={subcategory.slug}
+                                                    href={`/products/${category.slug}/${subcategory.slug}`}
+                                                    className="block rounded-md px-2 py-1.5 text-sm text-gray-600 hover:bg-stone-50 hover:text-primary"
+                                                >
+                                                    {subcategory.name}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
                     {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className={`text-sm font-medium transition-colors hover:text-accent ${
-                                isScrolled ? "text-gray-800" : "text-gray-200"
-                            }`}
-                        >
+                        <Link key={link.name} href={link.href} className={`text-sm font-medium transition-colors hover:text-accent ${textColor}`}>
                             {link.name}
                         </Link>
                     ))}
                     <LangToggle scrolled={isScrolled} />
-                    <Link
-                        href="/contact"
-                        className="bg-accent text-accent-foreground px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition"
-                    >
+                    <Link href="/contact" className="bg-accent text-accent-foreground px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition">
                         {t.getQuote}
                     </Link>
                 </div>
 
-                {/* Mobile Menu Button */}
-                <button
-                    className="md:hidden text-accent"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
+                <button className="md:hidden text-accent" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                     {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>
 
-            {/* Mobile Menu Overlay */}
             {isMobileMenuOpen && (
                 <div className="absolute top-full left-0 w-full bg-white shadow-lg py-6 px-6 md:hidden flex flex-col gap-4">
+                    <Link href="/" className="text-gray-800 font-medium hover:text-accent" onClick={() => setIsMobileMenuOpen(false)}>
+                        {t.introduction}
+                    </Link>
+                    <div>
+                        <Link href="/products" className="text-gray-800 font-medium hover:text-accent" onClick={() => setIsMobileMenuOpen(false)}>
+                            {t.products}
+                        </Link>
+                        <div className="mt-3 space-y-4 border-l border-gray-200 pl-4">
+                            {productCategories.map((category) => (
+                                <div key={category.slug}>
+                                    <p className="text-xs font-bold uppercase tracking-widest text-gray-400">{category.menuName}</p>
+                                    <div className="mt-2 flex flex-col gap-2">
+                                        {category.subcategories.map((subcategory) => (
+                                            <Link
+                                                key={subcategory.slug}
+                                                href={`/products/${category.slug}/${subcategory.slug}`}
+                                                className="text-sm text-gray-700 hover:text-accent"
+                                                onClick={() => setIsMobileMenuOpen(false)}
+                                            >
+                                                {subcategory.name}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                     {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className="text-gray-800 font-medium hover:text-accent"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
+                        <Link key={link.name} href={link.href} className="text-gray-800 font-medium hover:text-accent" onClick={() => setIsMobileMenuOpen(false)}>
                             {link.name}
                         </Link>
                     ))}
