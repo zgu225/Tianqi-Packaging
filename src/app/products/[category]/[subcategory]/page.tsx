@@ -119,7 +119,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {galleryImages.map((image, index) => (
               <a
                 key={image.src}
@@ -134,7 +134,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                     alt={image.alt}
                     fill
                     className="object-cover transition duration-700 group-hover:scale-105"
-                    sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                   />
                 </div>
               </a>
