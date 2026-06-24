@@ -24,10 +24,10 @@ export default function Navbar() {
         { name: t.contact, href: "/contact" },
     ];
 
-    const textColor = isScrolled ? "text-gray-800" : "text-gray-200";
+    const textColor = "text-gray-900";
 
     const LangToggle = ({ scrolled }: { scrolled: boolean }) => (
-        <div className={`flex items-center gap-0.5 rounded-full border p-0.5 ${scrolled ? "border-gray-200" : "border-white/30"}`}>
+        <div className={`flex items-center gap-0.5 rounded-full border p-0.5 ${scrolled ? "border-gray-200" : "border-gray-300"}`}>
             {(["en", "cn"] as const).map((l) => (
                 <button
                     key={l}
@@ -37,7 +37,7 @@ export default function Navbar() {
                             ? "bg-accent text-primary"
                             : scrolled
                               ? "text-gray-400 hover:text-gray-700"
-                              : "text-white/50 hover:text-white"
+                              : "text-gray-600 hover:text-gray-900"
                     }`}
                 >
                     {l.toUpperCase()}
@@ -53,7 +53,7 @@ export default function Navbar() {
             }`}
         >
             <div className="container mx-auto px-6 flex justify-between items-center">
-                <Link href="/" className={`text-2xl font-bold tracking-tighter ${isScrolled ? "text-primary" : "text-white"}`}>
+                <Link href="/" className="text-2xl font-bold tracking-tighter text-primary">
                     Tianqi<span className="text-accent">.</span>
                 </Link>
 
