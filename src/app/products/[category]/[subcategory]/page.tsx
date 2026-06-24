@@ -91,16 +91,11 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
               </div>
             </div>
 
-            <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-stone-200 shadow-xl">
-              <Image
-                src={galleryImages[0]?.src ?? subcategory.image}
-                alt={subcategory.name}
-                fill
-                priority
-                className="object-cover"
-                sizes="(min-width: 1024px) 50vw, 100vw"
-              />
-            </div>
+            <ProductBriefPanel
+              applications={subcategory.applications}
+              finishes={subcategory.finishes}
+              options={subcategory.options}
+            />
           </div>
         </div>
       </section>
@@ -115,12 +110,12 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
               {subcategory.name} Examples
             </h2>
             <p className="mt-3 text-gray-500">
-              Browse real product references from this category. Add more images to the matching folder in <span className="font-mono text-xs">public/products</span> and they will appear here automatically.
+              Browse product references from this category. Add more images to the matching folder in <span className="font-mono text-xs">public/products</span> and they will appear here automatically.
             </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {galleryImages.map((image, index) => (
+            {galleryImages.map((image) => (
               <a
                 key={image.src}
                 href={image.src}
@@ -134,6 +129,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                     alt={image.alt}
                     fill
                     className="object-cover transition duration-700 group-hover:scale-105"
+                    quality={95}
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                   />
                 </div>
@@ -227,6 +223,83 @@ function getGalleryImages(categorySlug: string, subcategorySlug: string, fallbac
     src: `/products/${categorySlug}/${subcategorySlug}/${encodeURIComponent(file)}`,
     alt: file.replace(/\.[^.]+$/, "").replace(/[-_]/g, " "),
   }));
+}
+
+function ProductBriefPanel({
+  applications,
+  finishes,
+  options,
+}: {
+  applications: string[];
+  finishes: string[];
+  options: string[];
+}) {
+  const workflow = ["Structure", "Material", "Print", "Finish", "Insert"];
+
+  return (
+    <div className="rounded-lg border border-primary/10 bg-white p-6 shadow-xl shadow-black/5">
+      <div className="flex items-center justify-between gap-4 border-b border-gray-100 pb-5">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-widest text-accent">
+            Product Brief
+          </p>
+          <h2 className="mt-2 text-2xl font-bold text-primary">
+            Custom Scope
+          </h2>
+        </div>
+        <div className="rounded-full bg-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white">
+          OEM / ODM
+        </div>
+      </div>
+
+      <div className="mt-6 grid gap-4 md:grid-cols-3">
+        <BriefColumn title="Applications" items={applications} />
+        <BriefColumn title="Structures" items={options} />
+        <BriefColumn title="Finishes" items={finishes} />
+      </div>
+
+      <div className="mt-7 rounded-lg bg-stone-50 p-5">
+        <p className="text-xs font-bold uppercase tracking-widest text-gray-400">
+          Development Flow
+        </p>
+        <div className="mt-4 grid grid-cols-5 gap-2">
+          {workflow.map((step, index) => (
+            <div key={step} className="min-w-0">
+              <div className="flex items-center gap-2">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white">
+                  {index + 1}
+                </span>
+                {index < workflow.length - 1 && (
+                  <span className="h-px flex-1 bg-primary/20" />
+                )}
+              </div>
+              <p className="mt-2 text-xs font-semibold text-primary">
+                {step}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BriefColumn({ title, items }: { title: string; items: string[] }) {
+  return (
+    <div>
+      <h3 className="text-sm font-bold text-primary">{title}</h3>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {items.map((item) => (
+          <span
+            key={item}
+            className="rounded-full border border-gray-200 px-3 py-1 text-xs font-medium text-gray-600"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 function DetailList({ title, items }: { title: string; items: string[] }) {
