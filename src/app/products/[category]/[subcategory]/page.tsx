@@ -105,13 +105,13 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
         </div>
       </section>
 
-      <section className="bg-white py-20">
+      <section className="bg-white py-16">
         <div className="container mx-auto px-6">
           <div className="mb-8 max-w-2xl">
             <p className="text-sm font-bold uppercase tracking-widest text-accent">
               Product Gallery
             </p>
-            <h2 className="mt-2 text-3xl font-bold text-primary">
+            <h2 className="mt-2 text-2xl font-bold text-primary md:text-3xl">
               {subcategory.name} Examples
             </h2>
             <p className="mt-3 text-gray-500">
@@ -119,24 +119,22 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
             </p>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {galleryImages.map((image, index) => (
               <a
                 key={image.src}
                 href={image.src}
                 target="_blank"
                 rel="noreferrer"
-                className={`group relative overflow-hidden rounded-lg bg-stone-100 shadow-sm transition hover:-translate-y-1 hover:shadow-xl ${
-                  index === 0 ? "md:col-span-2 md:row-span-2" : ""
-                }`}
+                className="group relative overflow-hidden rounded-lg bg-stone-100 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
               >
-                <div className={index === 0 ? "relative aspect-[4/3]" : "relative aspect-square"}>
+                <div className="relative aspect-square">
                   <Image
                     src={image.src}
                     alt={image.alt}
                     fill
                     className="object-cover transition duration-700 group-hover:scale-105"
-                    sizes={index === 0 ? "(min-width: 768px) 66vw, 100vw" : "(min-width: 768px) 33vw, 100vw"}
+                    sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   />
                 </div>
               </a>

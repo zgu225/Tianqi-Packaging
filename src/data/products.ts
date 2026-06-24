@@ -35,8 +35,7 @@ export const productCategories: ProductCategory[] = [
         summary: "Premium packaging for skincare, makeup, fragrance, and beauty gift sets.",
         description:
           "Cosmetics boxes can be produced as rigid boxes, folding cartons, magnetic boxes, or insert-based sets for beauty products that need strong shelf presence and clean brand presentation.",
-        image:
-          "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1200&auto=format&fit=crop",
+        image: "/products/paper-box/cosmetics-box/ai-example-01.jpg",
         applications: ["Skincare sets", "Makeup palettes", "Perfume", "Beauty tools"],
         options: ["Rigid box", "Folding carton", "Magnetic closure", "Custom insert"],
         finishes: ["Foil stamping", "Embossing", "Spot UV", "Soft-touch lamination"],
@@ -176,8 +175,7 @@ export const productCategories: ProductCategory[] = [
         summary: "Custom envelopes for cards, invitations, documents, and premium inserts.",
         description:
           "Envelopes can be matched to card sets, manuals, or branded inserts with custom size, paper, flap shape, and print treatment.",
-        image:
-          "https://images.unsplash.com/photo-1586282391129-76a6df230234?w=1200&auto=format&fit=crop",
+        image: "/products/stationery/envelope/ai-example-01.jpg",
         applications: ["Invitation envelopes", "Card envelopes", "Document sleeves", "Gift inserts"],
         options: ["Custom size", "Wallet flap", "Peel-and-seal", "Printed liner"],
         finishes: ["Foil logo", "Pattern print", "Textured paper", "Spot color print"],
