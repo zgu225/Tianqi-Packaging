@@ -16,6 +16,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     if (saved === "en" || saved === "cn") setLang(saved);
   }, []);
 
+  useEffect(() => {
+    document.documentElement.lang = lang === "cn" ? "zh-CN" : "en";
+  }, [lang]);
+
   const handleSet = (l: Lang) => {
     setLang(l);
     localStorage.setItem("lang", l);

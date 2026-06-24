@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Tianqi Packaging | Premium Custom Paper Boxes & Sustainable Solutions",
-    description: "Tianqi Packaging specializes in high-end paper packaging. From textured art paper to eco-friendly kraft boxes, we bring your brand's vision to life.",
+    title: "Tianqi Packaging 天启包装 | Premium Custom Paper Boxes & Sustainable Solutions",
+    description: "Tianqi Packaging 天启包装 specializes in high-end custom paper packaging, including paper boxes, card decks, stationery, and sustainable retail packaging solutions.",
 };
 
 import Navbar from "@/components/Navbar";

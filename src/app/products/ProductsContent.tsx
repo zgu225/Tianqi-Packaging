@@ -5,12 +5,13 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { useLang } from "@/context/LanguageContext";
-import { productCategories } from "@/data/products";
+import { getLocalizedProductCategories } from "@/data/products";
 import { translations } from "@/lib/translations";
 
 export default function ProductsContent() {
   const { lang } = useLang();
   const t = translations[lang].productsPage;
+  const productCategories = getLocalizedProductCategories(lang);
 
   return (
     <main className="min-h-screen pt-24">

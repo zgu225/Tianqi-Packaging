@@ -13,6 +13,14 @@ const footerProductLinks = allSubcategories.slice(0, 6).map((product) => ({
 export default function Footer() {
   const { lang } = useLang();
   const t = translations[lang].footer;
+  const address =
+    lang === "cn"
+      ? "中国广东省东莞市天启工业园 523000"
+      : "Tianqi Industrial Park, Dongguan, Guangdong, China 523000";
+  const certifications =
+    lang === "cn"
+      ? ["FSC®认证", "ISO 9001", "SGS认证"]
+      : ["FSC® Certified", "ISO 9001", "SGS Verified"];
 
   return (
     <footer className="bg-primary text-white">
@@ -56,7 +64,7 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-gray-400">
               <li className="flex gap-3 items-start">
                 <MapPin size={16} className="text-accent shrink-0 mt-0.5" />
-                <span>Tianqi Industrial Park, Dongguan, Guangdong, China 523000</span>
+                <span>{address}</span>
               </li>
               <li className="flex gap-3 items-center">
                 <Mail size={16} className="text-accent shrink-0" />
@@ -75,9 +83,11 @@ export default function Footer() {
         <div className="container mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
           <p>{t.copyright}</p>
           <div className="flex items-center gap-4 flex-wrap justify-center">
-            <span className="border border-white/20 px-2 py-1 rounded">FSC® Certified</span>
-            <span className="border border-white/20 px-2 py-1 rounded">ISO 9001</span>
-            <span className="border border-white/20 px-2 py-1 rounded">SGS Verified</span>
+            {certifications.map((certification) => (
+              <span key={certification} className="border border-white/20 px-2 py-1 rounded">
+                {certification}
+              </span>
+            ))}
             <Link href="#" className="hover:text-accent transition">{t.privacyPolicy}</Link>
             <Link href="#" className="hover:text-accent transition">{t.termsOfService}</Link>
           </div>

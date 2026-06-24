@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useLang } from "@/context/LanguageContext";
-import { productCategories } from "@/data/products";
+import { getLocalizedProductCategories } from "@/data/products";
 import { translations } from "@/lib/translations";
 
 export default function Navbar() {
@@ -14,6 +14,7 @@ export default function Navbar() {
     const pathname = usePathname();
     const { lang, setLang } = useLang();
     const t = translations[lang].nav;
+    const productCategories = getLocalizedProductCategories(lang);
 
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 50);

@@ -26,9 +26,33 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    const subject = encodeURIComponent(`Packaging Inquiry — ${form.product || "General"} — ${form.company}`);
+    const subject = encodeURIComponent(
+      lang === "cn"
+        ? `包装询盘 — ${form.product || "综合咨询"} — ${form.company}`
+        : `Packaging Inquiry — ${form.product || "General"} — ${form.company}`,
+    );
+    const labels =
+      lang === "cn"
+        ? {
+            name: "姓名",
+            company: "公司",
+            email: "邮箱",
+            country: "国家/地区",
+            product: "产品意向",
+            quantity: "预计数量",
+            message: "项目详情",
+          }
+        : {
+            name: "Name",
+            company: "Company",
+            email: "Email",
+            country: "Country",
+            product: "Product Interest",
+            quantity: "Estimated Quantity",
+            message: "Message",
+          };
     const body = encodeURIComponent(
-      `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\nCountry: ${form.country}\nProduct Interest: ${form.product}\nEstimated Quantity: ${form.quantity}\n\nMessage:\n${form.message}`
+      `${labels.name}: ${form.name}\n${labels.company}: ${form.company}\n${labels.email}: ${form.email}\n${labels.country}: ${form.country}\n${labels.product}: ${form.product}\n${labels.quantity}: ${form.quantity}\n\n${labels.message}:\n${form.message}`
     );
     setTimeout(() => {
       window.location.href = `mailto:info@tianqipackaging.com?subject=${subject}&body=${body}`;
