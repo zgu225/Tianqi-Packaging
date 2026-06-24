@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import fs from "node:fs";
+import path from "node:path";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getProductSubcategory, productCategories } from "@/data/products";
 
@@ -44,6 +46,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   }
 
   const { category, subcategory } = product;
+  const galleryImages = getGalleryImages(category.slug, subcategory.slug, subcategory.image);
   const siblingSubcategories = category.subcategories.filter(
     (item) => item.slug !== subcategory.slug,
   );
@@ -90,7 +93,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
 
             <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-stone-200 shadow-xl">
               <Image
-                src={subcategory.image}
+                src={galleryImages[0]?.src ?? subcategory.image}
                 alt={subcategory.name}
                 fill
                 priority
@@ -98,6 +101,46 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                 sizes="(min-width: 1024px) 50vw, 100vw"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-20">
+        <div className="container mx-auto px-6">
+          <div className="mb-8 max-w-2xl">
+            <p className="text-sm font-bold uppercase tracking-widest text-accent">
+              Product Gallery
+            </p>
+            <h2 className="mt-2 text-3xl font-bold text-primary">
+              {subcategory.name} Examples
+            </h2>
+            <p className="mt-3 text-gray-500">
+              Browse real product references from this category. Add more images to the matching folder in <span className="font-mono text-xs">public/products</span> and they will appear here automatically.
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {galleryImages.map((image, index) => (
+              <a
+                key={image.src}
+                href={image.src}
+                target="_blank"
+                rel="noreferrer"
+                className={`group relative overflow-hidden rounded-lg bg-stone-100 shadow-sm transition hover:-translate-y-1 hover:shadow-xl ${
+                  index === 0 ? "md:col-span-2 md:row-span-2" : ""
+                }`}
+              >
+                <div className={index === 0 ? "relative aspect-[4/3]" : "relative aspect-square"}>
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover transition duration-700 group-hover:scale-105"
+                    sizes={index === 0 ? "(min-width: 768px) 66vw, 100vw" : "(min-width: 768px) 33vw, 100vw"}
+                  />
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>
@@ -157,6 +200,35 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
       </section>
     </main>
   );
+}
+
+function getGalleryImages(categorySlug: string, subcategorySlug: string, fallbackImage: string) {
+  const directory = path.join(
+    process.cwd(),
+    "public",
+    "products",
+    categorySlug,
+    subcategorySlug,
+  );
+
+  if (!fs.existsSync(directory)) {
+    return [{ src: fallbackImage, alt: subcategorySlug }];
+  }
+
+  const imageFiles = fs
+    .readdirSync(directory)
+    .filter((file) => /\.(jpe?g|png|webp|gif)$/i.test(file))
+    .filter((file) => !file.startsWith("."))
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
+  if (imageFiles.length === 0) {
+    return [{ src: fallbackImage, alt: subcategorySlug }];
+  }
+
+  return imageFiles.map((file) => ({
+    src: `/products/${categorySlug}/${subcategorySlug}/${encodeURIComponent(file)}`,
+    alt: file.replace(/\.[^.]+$/, "").replace(/[-_]/g, " "),
+  }));
 }
 
 function DetailList({ title, items }: { title: string; items: string[] }) {
