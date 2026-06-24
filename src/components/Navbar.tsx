@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useLang } from "@/context/LanguageContext";
 import { productCategories } from "@/data/products";
 import { translations } from "@/lib/translations";
@@ -10,6 +11,7 @@ import { translations } from "@/lib/translations";
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const pathname = usePathname();
     const { lang, setLang } = useLang();
     const t = translations[lang].nav;
 
@@ -24,10 +26,11 @@ export default function Navbar() {
         { name: t.contact, href: "/contact" },
     ];
 
-    const textColor = isScrolled ? "text-gray-800" : "text-gray-200";
+    const isHomeTop = pathname === "/" && !isScrolled;
+    const textColor = isHomeTop ? "text-white" : "text-gray-900";
 
     const LangToggle = ({ scrolled }: { scrolled: boolean }) => (
-        <div className={`flex items-center gap-0.5 rounded-full border p-0.5 ${scrolled ? "border-gray-200" : "border-white/30"}`}>
+        <div className={`flex items-center gap-0.5 rounded-full border p-0.5 ${scrolled || !isHomeTop ? "border-gray-200" : "border-white/30"}`}>
             {(["en", "cn"] as const).map((l) => (
                 <button
                     key={l}
@@ -35,9 +38,9 @@ export default function Navbar() {
                     className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase transition-all ${
                         lang === l
                             ? "bg-accent text-primary"
-                            : scrolled
+                            : scrolled || !isHomeTop
                               ? "text-gray-400 hover:text-gray-700"
-                              : "text-white/50 hover:text-white"
+                              : "text-white/60 hover:text-white"
                     }`}
                 >
                     {l.toUpperCase()}
@@ -53,7 +56,7 @@ export default function Navbar() {
             }`}
         >
             <div className="container mx-auto px-6 flex justify-between items-center">
-                <Link href="/" className={`text-2xl font-bold tracking-tighter ${isScrolled ? "text-primary" : "text-white"}`}>
+                <Link href="/" className={`text-2xl font-bold tracking-tighter ${isHomeTop ? "text-white" : "text-primary"}`}>
                     Tianqi<span className="text-accent">.</span>
                 </Link>
 
