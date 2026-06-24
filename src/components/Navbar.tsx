@@ -23,6 +23,7 @@ export default function Navbar() {
     }, []);
 
     const navLinks = [
+        { name: t.finishes, href: "/finishes" },
         { name: t.about, href: "/about" },
         { name: t.contact, href: "/contact" },
     ];

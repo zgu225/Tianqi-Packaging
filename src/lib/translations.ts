@@ -5,6 +5,7 @@ export const translations = {
     nav: {
       introduction: "Introduction",
       products: "Products",
+      finishes: "Finishes",
       about: "About Us",
       contact: "Contact",
       getQuote: "Get Quote",
@@ -283,6 +284,7 @@ export const translations = {
       ],
       company: [
         { name: "About Us", href: "/about" },
+        { name: "Surface Finishes", href: "/finishes" },
         { name: "Sustainability", href: "/about#sustainability" },
         { name: "Certifications", href: "/about#certifications" },
         { name: "Contact Us", href: "/contact" },
@@ -298,6 +300,7 @@ export const translations = {
     nav: {
       introduction: "首页",
       products: "产品",
+      finishes: "表面工艺",
       about: "关于我们",
       contact: "联系我们",
       getQuote: "获取报价",
@@ -576,6 +579,7 @@ export const translations = {
       ],
       company: [
         { name: "关于我们", href: "/about" },
+        { name: "表面处理工艺", href: "/finishes" },
         { name: "可持续发展", href: "/about#sustainability" },
         { name: "资质认证", href: "/about#certifications" },
         { name: "联系我们", href: "/contact" },
