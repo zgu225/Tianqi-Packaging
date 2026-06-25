@@ -18,7 +18,6 @@ const pageCopy = {
   en: {
     back: "Back to Products",
     quote: "Get a Quote",
-    viewCategory: "View",
     galleryTag: "Product Gallery",
     examples: "Examples",
     galleryText:
@@ -41,7 +40,6 @@ const pageCopy = {
   cn: {
     back: "返回产品目录",
     quote: "获取报价",
-    viewCategory: "查看",
     galleryTag: "产品图库",
     examples: "案例展示",
     galleryText:
@@ -78,14 +76,6 @@ export default function ProductDetailContent({
     <main className="min-h-screen pt-24">
       <section className="bg-stone-50 py-16">
         <div className="container mx-auto px-6">
-          <Link
-            href="/products"
-            className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent"
-          >
-            <ArrowLeft size={16} />
-            {copy.back}
-          </Link>
-
           <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
             <div>
               <p className="text-sm font-bold uppercase tracking-widest text-accent">
@@ -106,10 +96,11 @@ export default function ProductDetailContent({
                   <ArrowRight size={16} />
                 </Link>
                 <Link
-                  href={`/products#${category.slug}`}
-                  className="inline-flex items-center justify-center rounded-full border border-primary/20 px-7 py-3 text-sm font-semibold text-primary transition hover:border-primary"
+                  href="/products"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/20 px-7 py-3 text-sm font-semibold text-primary transition hover:border-primary"
                 >
-                  {copy.viewCategory} {category.menuName}
+                  <ArrowLeft size={16} />
+                  {copy.back}
                 </Link>
               </div>
             </div>
