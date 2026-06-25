@@ -37,27 +37,33 @@ type FinishProcess = {
 const copy = {
   en: {
     eyebrow: "Surface Finishing Library",
-    title: "Representative Print Finishes for Premium Packaging",
+    title: "Packaging-Focused Surface Finish References",
     intro:
-      "A curated visual library of advanced surface treatments. Images are sourced from open-license libraries and credited on each card to reduce copyright risk.",
+      "A curated set of packaging, label, card, and gift-box references for advanced finishing options. Images are sourced from open-license libraries and credited on each card.",
     sourceNote:
-      "Reference images are used under CC0, CC BY, or compatible open licenses. They show representative visual effects; final packaging samples should be confirmed with Tianqi physical proofs.",
+      "Reference images are used under CC0, CC BY, CC BY-SA, or compatible open licenses. They show representative packaging-related visual effects; final finishes should be confirmed with Tianqi physical proofs.",
     sourceLabel: "Image source",
     licenseLabel: "License",
     applicationsLabel: "Best for",
-    cta: "Discuss Finishing Options",
+    moreTitle: "More Finishing Options",
+    moreText:
+      "Need flocking, pearl varnish, glow ink, scented coating, laser die-cutting, special paper, or a combined finish plan? Contact us for more options.",
+    cta: "Ask for More Options",
   },
   cn: {
     eyebrow: "表面处理工艺库",
-    title: "高端包装常用表面处理工艺参考",
+    title: "更贴近包装成品的表面工艺参考",
     intro:
-      "整理一组更接近真实工艺的视觉参考图，图片来自开放授权图库，并在每张卡片中标注作者、授权和来源，降低版权风险。",
+      "整理一组以包装、标签、卡牌、礼盒为主的表面处理参考图。图片来自开放授权图库，并在每张卡片中标注作者、授权和来源。",
     sourceNote:
-      "参考图使用 CC0、CC BY 或兼容开放授权，仅用于展示代表性视觉效果；最终效果仍建议以天启实物样品确认为准。",
+      "参考图使用 CC0、CC BY、CC BY-SA 或兼容开放授权，仅用于展示包装相关的代表性视觉效果；最终效果仍建议以天启实物样品确认为准。",
     sourceLabel: "图片来源",
     licenseLabel: "授权",
     applicationsLabel: "适用场景",
-    cta: "咨询工艺方案",
+    moreTitle: "更多工艺选项",
+    moreText:
+      "如需植绒、珠光油、夜光油墨、香味涂层、激光镂空、特种纸或多工艺组合方案，更多 option 请联系我们咨询。",
+    cta: "咨询更多工艺",
   },
 } as const;
 
@@ -67,21 +73,43 @@ const finishProcesses: FinishProcess[] = [
     name: { en: "Raised UV", cn: "浮雕UV" },
     tag: { en: "Gloss relief", cn: "立体亮面" },
     description: {
-      en: "A thick UV varnish builds raised glossy details on logos, patterns, or premium graphic areas.",
-      cn: "通过较厚的UV油墨形成局部凸起亮面，适合突出LOGO、纹样和重点图形区域。",
+      en: "A thicker UV varnish builds raised glossy detail on logos, pattern lines, or focal artwork.",
+      cn: "通过较厚的UV油墨形成局部凸起亮面，适合突出LOGO、纹样线条和重点图形。",
     },
     applications: {
-      en: "Luxury cards, cosmetics boxes, rigid gift boxes",
-      cn: "高端卡牌、美妆盒、硬质礼盒",
+      en: "Tea boxes, gift boxes, cosmetics cartons",
+      cn: "茶叶礼盒、精品礼盒、美妆彩盒",
     },
     image: {
-      src: "https://live.staticflickr.com/1471/23995000956_a61d010d48_b.jpg",
-      alt: "Embossed business card showing raised print detail",
-      title: "Embossed business cards from Porcelain Tea Parlour",
-      creator: "David Jackmanson",
-      license: "CC BY 2.0",
-      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
-      sourceUrl: "https://www.flickr.com/photos/58301516@N00/23995000956",
+      src: "https://live.staticflickr.com/65535/48043121402_1f5b8429aa_b.jpg",
+      alt: "Spot UV varnished tea gift box",
+      title: "Full Over Spot UV Varnished Tea Gift Box",
+      creator: "CustomPackaging",
+      license: "CC BY-SA 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
+      sourceUrl: "https://www.flickr.com/photos/151611460@N04/48043121402",
+    },
+  },
+  {
+    id: "spot-uv",
+    name: { en: "Spot UV", cn: "局部UV" },
+    tag: { en: "Selective gloss", cn: "局部高光" },
+    description: {
+      en: "Gloss coating is applied only to selected areas, creating contrast against matte paper or lamination.",
+      cn: "只在指定区域增加亮面涂层，与哑面纸张或覆膜形成清晰反差。",
+    },
+    applications: {
+      en: "Rigid boxes, folding cartons, cards, sleeves",
+      cn: "硬质礼盒、折叠彩盒、卡牌、套盒",
+    },
+    image: {
+      src: "https://live.staticflickr.com/65535/48043060993_594242bcf9_b.jpg",
+      alt: "Spot UV varnished tea gift box side view",
+      title: "Full Over Spot UV Varnished Tea Gift Box Sideview",
+      creator: "CustomPackaging",
+      license: "CC BY-SA 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
+      sourceUrl: "https://www.flickr.com/photos/151611460@N04/48043060993",
     },
   },
   {
@@ -93,17 +121,17 @@ const finishProcesses: FinishProcess[] = [
       cn: "通过温度和压力将全息箔转印到指定区域，呈现随角度变化的彩虹金属光泽。",
     },
     applications: {
-      en: "Tarot decks, cosmetics, festival gift packaging",
-      cn: "塔罗牌、美妆包装、节庆礼盒",
+      en: "Card decks, CD sleeves, cosmetics, festival packaging",
+      cn: "卡牌、光盘包装、美妆包装、节庆礼盒",
     },
     image: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/d/d0/Holographic_Hot_Stamping_Foil_From_Karul_Holo_Science_India_Ltd.jpg",
-      alt: "Holographic hot stamping foil roll",
-      title: "Holographic Hot Stamping Foil",
-      creator: "Karul Holo Science India Ltd",
-      license: "CC0 1.0",
-      licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/",
-      sourceUrl: "https://commons.wikimedia.org/w/index.php?curid=168094490",
+      src: "https://live.staticflickr.com/3270/2851276170_4470f3cf79_b.jpg",
+      alt: "Holographic CD packaging reference",
+      title: "New CDs from Yesasia",
+      creator: "hildgrim",
+      license: "CC BY-SA 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
+      sourceUrl: "https://www.flickr.com/photos/22870477@N04/2851276170",
     },
   },
   {
@@ -111,21 +139,21 @@ const finishProcesses: FinishProcess[] = [
     name: { en: "3D Foil Stamping", cn: "3D烫金" },
     tag: { en: "Raised foil", cn: "立体金属层" },
     description: {
-      en: "Combines foil transfer with raised pressure to give metallic elements a sculptural 3D feel.",
-      cn: "将烫印与立体压凸结合，让金属图案呈现更明显的浮起层次。",
+      en: "Combines foil transfer with raised pressure to make metallic logos or patterns feel sculptural.",
+      cn: "将烫印与立体压凸结合，让金属LOGO或图案呈现更明显的浮起层次。",
     },
     applications: {
-      en: "Premium logos, collector boxes, invitation sets",
-      cn: "高端LOGO、收藏盒、邀请函套装",
+      en: "Luxury gift boxes, apparel boxes, collector packaging",
+      cn: "高端礼盒、服饰包装、收藏类包装",
     },
     image: {
-      src: "https://live.staticflickr.com/2229/2142104611_54bc7acece_b.jpg",
-      alt: "Foil card reference with metallic detail",
-      title: "'O' Christmas card",
-      creator: "Lauren Manning",
-      license: "CC BY 2.0",
-      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
-      sourceUrl: "https://www.flickr.com/photos/28541331@N00/2142104611",
+      src: "https://live.staticflickr.com/65535/48043120152_989a71d7f8_b.jpg",
+      alt: "Luxury gift box with gold foil stamping",
+      title: "Luxury Gift Box with Gold Foil Stamping",
+      creator: "CustomPackaging",
+      license: "CC BY-SA 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
+      sourceUrl: "https://www.flickr.com/photos/151611460@N04/48043120152",
     },
   },
   {
@@ -133,21 +161,21 @@ const finishProcesses: FinishProcess[] = [
     name: { en: "Security Foil Stamping", cn: "防伪烫印" },
     tag: { en: "Anti-counterfeit", cn: "防伪识别" },
     description: {
-      en: "Security hologram or foil elements can add authentication cues for certificates, limited editions, and sealed packaging.",
-      cn: "通过防伪全息或特殊烫印图案增加识别特征，适合证书、限量产品和封签包装。",
+      en: "Hologram labels or security foils add authentication cues for sealed, limited, or certified products.",
+      cn: "通过防伪全息标签或特殊烫印图案增加识别特征，适合封签、限量产品和认证包装。",
     },
     applications: {
-      en: "Certificates, seals, premium limited editions",
-      cn: "证书、防伪封签、限量高端包装",
+      en: "Security labels, certificates, premium seals",
+      cn: "防伪标签、证书、精品封签",
     },
     image: {
-      src: "https://live.staticflickr.com/5053/5480841196_9d196d7272_b.jpg",
-      alt: "Security hologram detail",
-      title: "Visa Dove Hologram Detail",
-      creator: "Dominic's pics",
-      license: "CC BY 2.0",
-      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
-      sourceUrl: "https://www.flickr.com/photos/64097751@N00/5480841196",
+      src: "https://upload.wikimedia.org/wikipedia/commons/d/da/GatewayTracingHologramLabel.jpg",
+      alt: "Hologram security label reference",
+      title: "GatewayTracingHologramLabel",
+      creator: "Newone",
+      license: "CC BY-SA 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+      sourceUrl: "https://commons.wikimedia.org/w/index.php?curid=5035589",
     },
   },
   {
@@ -159,17 +187,17 @@ const finishProcesses: FinishProcess[] = [
       cn: "通过丝印方式叠加含闪粉的UV层，形成闪烁颗粒感和更强触感。",
     },
     applications: {
-      en: "Beauty packaging, children’s products, holiday boxes",
+      en: "Beauty packaging, children products, holiday boxes",
       cn: "美妆包装、儿童产品、节日礼盒",
     },
     image: {
-      src: "https://live.staticflickr.com/3886/15011499751_cdc3f90ec4_b.jpg",
-      alt: "Transparent glitter material reference",
-      title: "Glitter Trans-Clear",
-      creator: "Brick Colorstream",
+      src: "https://live.staticflickr.com/2684/4149913399_1539439a46_b.jpg",
+      alt: "Glitter packaging reference",
+      title: "Packaging",
+      creator: "GlitterandFrills",
       license: "CC BY 2.0",
       licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
-      sourceUrl: "https://www.flickr.com/photos/126975831@N07/15011499751",
+      sourceUrl: "https://www.flickr.com/photos/33334577@N06/4149913399",
     },
   },
   {
@@ -177,21 +205,21 @@ const finishProcesses: FinishProcess[] = [
     name: { en: "Optically Variable Ink", cn: "光变油墨" },
     tag: { en: "Angle shift", cn: "角度变色" },
     description: {
-      en: "Pigments shift color as viewing angle changes, often used for security, limited editions, and premium detail.",
-      cn: "颜料随观察角度发生颜色变化，常用于防伪、高端限量款和特殊视觉细节。",
+      en: "Color-shifting ink changes appearance by viewing angle, giving labels and boxes a security or luxury effect.",
+      cn: "光变油墨随观察角度改变颜色，可用于标签、礼盒和防伪包装的高端视觉效果。",
     },
     applications: {
-      en: "Anti-counterfeit packaging, premium labels, certificates",
-      cn: "防伪包装、高端标签、证书类印刷品",
+      en: "Premium labels, limited boxes, anti-counterfeit packaging",
+      cn: "高端标签、限量礼盒、防伪包装",
     },
     image: {
-      src: "https://collections.museumsvictoria.com.au/content/media/45/1324545-large.jpg",
-      alt: "Bank note reference with optically variable security ink",
-      title: "Polymer Bank Note - 10 Dollars",
-      creator: "Photographer: Nick Crotty",
-      license: "CC BY 4.0",
-      licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
-      sourceUrl: "https://collections.museumsvictoria.com.au/items/2234219",
+      src: "https://live.staticflickr.com/7057/6971376857_d3fff957bf_b.jpg",
+      alt: "Iridescent gift box reference",
+      title: "Hexagonal Origami Box #11, #12, #13, #14, #15",
+      creator: "Dominic's pics",
+      license: "CC BY 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+      sourceUrl: "https://www.flickr.com/photos/64097751@N00/6971376857",
     },
   },
   {
@@ -203,17 +231,17 @@ const finishProcesses: FinishProcess[] = [
       cn: "油墨在触摸或受热后改变颜色或透明度，可增强包装互动性。",
     },
     applications: {
-      en: "Interactive cards, novelty packaging, promotional boxes",
-      cn: "互动卡牌、创意包装、促销礼盒",
+      en: "Candy boxes, beverage labels, interactive card packaging",
+      cn: "糖果盒、饮料标签、互动卡牌包装",
     },
     image: {
-      src: "https://live.staticflickr.com/8424/7690734490_ac9b8fc315_b.jpg",
-      alt: "Thermochromic ink print reference",
-      title: "Mr. Pink is Printed",
-      creator: "daan",
+      src: "https://live.staticflickr.com/940/29030295197_614f6ee086_b.jpg",
+      alt: "Candy box packaging reference",
+      title: "Candy Boxes Are Not Just Squares or Hearts",
+      creator: "franklynhalstead",
       license: "CC BY 2.0",
       licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
-      sourceUrl: "https://www.flickr.com/photos/70195785@N00/7690734490",
+      sourceUrl: "https://www.flickr.com/photos/163785392@N02/29030295197",
     },
   },
   {
@@ -225,17 +253,17 @@ const finishProcesses: FinishProcess[] = [
       cn: "通过哑面和亮面区域的反差形成高级触感，适合大面积背景与局部图案对比。",
     },
     applications: {
-      en: "Rigid boxes, folding cartons, business cards",
-      cn: "硬质礼盒、折叠彩盒、商务卡片",
+      en: "Tea boxes, cosmetics cartons, rigid boxes",
+      cn: "茶叶盒、美妆彩盒、硬质礼盒",
     },
     image: {
-      src: "https://live.staticflickr.com/3015/2950769045_41ca0e429b_b.jpg",
-      alt: "Business card reference with varnish contrast",
-      title: "Darek Fedko Business Card",
-      creator: "ósma trzydzieści",
-      license: "CC BY 2.0",
-      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
-      sourceUrl: "https://www.flickr.com/photos/72462927@N00/2950769045",
+      src: "https://live.staticflickr.com/65535/48043121277_e8ed4fba54_b.jpg",
+      alt: "Spot UV varnished tea gift box with matte and gloss contrast",
+      title: "Full Over Spot UV Varnished Tea Gift Box Sideview Three",
+      creator: "CustomPackaging",
+      license: "CC BY-SA 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
+      sourceUrl: "https://www.flickr.com/photos/151611460@N04/48043121277",
     },
   },
   {
@@ -247,17 +275,17 @@ const finishProcesses: FinishProcess[] = [
       cn: "利用可重复使用的全息膜把衍射纹理转移到UV涂层中，表面无需残留金属箔。",
     },
     applications: {
-      en: "Cosmetics cartons, retail sleeves, premium promotional packaging",
-      cn: "美妆彩盒、零售套盒、高端促销包装",
+      en: "Cosmetics cartons, retail sleeves, promotional boxes",
+      cn: "美妆彩盒、零售套盒、促销礼盒",
     },
     image: {
-      src: "https://live.staticflickr.com/3905/14955440009_19325e2381_b.jpg",
-      alt: "Holographic paper detail reference",
-      title: "Holographic paper detail",
-      creator: "wyldvision",
+      src: "https://live.staticflickr.com/7067/6971384029_dcc596da5f_b.jpg",
+      alt: "Iridescent packaging box reference",
+      title: "Hexagonal Origami Box #10",
+      creator: "Dominic's pics",
       license: "CC BY 2.0",
       licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
-      sourceUrl: "https://www.flickr.com/photos/126767021@N06/14955440009",
+      sourceUrl: "https://www.flickr.com/photos/64097751@N00/6971384029",
     },
   },
   {
@@ -269,17 +297,17 @@ const finishProcesses: FinishProcess[] = [
       cn: "无需高温烫版，通过胶层与冷烫膜联机转移，适合较大面积金属效果和后续套印。",
     },
     applications: {
-      en: "Retail cartons, labels, high-volume packaging",
-      cn: "零售彩盒、标签、大批量包装",
+      en: "Retail cartons, labels, high-volume boxes",
+      cn: "零售彩盒、标签、大批量包装盒",
     },
     image: {
-      src: "https://live.staticflickr.com/7056/6825264646_897db52dbf_b.jpg",
-      alt: "Iridescent foil box reference",
-      title: "Hexagonal Origami Box with Lid #10",
-      creator: "Dominic's pics",
-      license: "CC BY 2.0",
-      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
-      sourceUrl: "https://www.flickr.com/photos/64097751@N00/6825264646",
+      src: "https://live.staticflickr.com/65535/48043059798_c6cb6751a6_b.jpg",
+      alt: "Gold foil stamped gift box reference",
+      title: "Luxury Gift Box with Gold Foil Stamping Side View",
+      creator: "CustomPackaging",
+      license: "CC BY-SA 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
+      sourceUrl: "https://www.flickr.com/photos/151611460@N04/48043059798",
     },
   },
   {
@@ -295,13 +323,13 @@ const finishProcesses: FinishProcess[] = [
       cn: "手表盒、珠宝盒、笔记本、文具包装",
     },
     image: {
-      src: "https://live.staticflickr.com/4022/4408341600_795dfe9cf1_b.jpg",
-      alt: "Textured paper and leather-like embossed reference",
-      title: "Texture - leather - notes",
-      creator: "Shelley Freedman",
+      src: "https://live.staticflickr.com/3282/2952822474_4bfbab5f15_b.jpg",
+      alt: "Embossed gift box reference",
+      title: "Princess Mary Christmas 1914 Gift Box",
+      creator: "David Spender",
       license: "CC BY 2.0",
       licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
-      sourceUrl: "https://www.flickr.com/photos/27932679@N02/4408341600",
+      sourceUrl: "https://www.flickr.com/photos/8313664@N03/2952822474",
     },
   },
 ];
@@ -402,10 +430,16 @@ export default function FinishesPage() {
             ))}
           </div>
 
-          <div className="mt-12 flex justify-center">
+          <div className="mt-12 rounded-lg bg-primary p-8 text-white md:flex md:items-center md:justify-between md:gap-8">
+            <div className="max-w-2xl">
+              <h2 className="text-2xl font-bold">{t.moreTitle}</h2>
+              <p className="mt-3 text-sm leading-relaxed text-gray-300">
+                {t.moreText}
+              </p>
+            </div>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white transition hover:bg-accent hover:text-primary"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3 text-sm font-semibold text-primary transition hover:bg-white md:mt-0"
             >
               {t.cta}
               <ArrowRight size={16} />
