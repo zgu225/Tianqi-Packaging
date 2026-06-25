@@ -102,9 +102,6 @@ export default function Navbar() {
                         </Link>
                     ))}
                     <LangToggle scrolled={isScrolled} />
-                    <Link href="/contact" className="bg-accent text-accent-foreground px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition">
-                        {t.getQuote}
-                    </Link>
                 </div>
 
                 <button className="md:hidden text-accent" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>

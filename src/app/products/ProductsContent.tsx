@@ -46,7 +46,7 @@ export default function ProductsContent() {
           {productCategories.map((category) => (
             <ScrollReveal key={category.slug}>
               <div id={category.slug} className="scroll-mt-28">
-                <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <div className="mb-8 max-w-2xl">
                   <div className="max-w-2xl">
                     <span className="text-sm font-bold uppercase tracking-widest text-accent">
                       {category.menuName}
@@ -54,13 +54,6 @@ export default function ProductsContent() {
                     <h2 className="mt-2 text-3xl font-bold text-primary">{category.name}</h2>
                     <p className="mt-3 text-gray-500">{category.description}</p>
                   </div>
-                  <Link
-                    href="/contact"
-                    className="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent hover:text-accent-foreground"
-                  >
-                    {lang === "cn" ? "咨询此大类" : `Ask About ${category.menuName}`}
-                    <ArrowRight size={16} />
-                  </Link>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

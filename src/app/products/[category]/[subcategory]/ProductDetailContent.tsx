@@ -17,7 +17,6 @@ type ProductDetailContentProps = {
 const pageCopy = {
   en: {
     back: "Back to Products",
-    quote: "Get a Quote",
     galleryTag: "Product Gallery",
     examples: "Examples",
     galleryText:
@@ -39,7 +38,6 @@ const pageCopy = {
   },
   cn: {
     back: "返回产品目录",
-    quote: "获取报价",
     galleryTag: "产品图库",
     examples: "案例展示",
     galleryText:
@@ -88,13 +86,6 @@ export default function ProductDetailContent({
                 {subcategory.description}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white transition hover:bg-accent hover:text-accent-foreground"
-                >
-                  {copy.quote}
-                  <ArrowRight size={16} />
-                </Link>
                 <Link
                   href="/products"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/20 px-7 py-3 text-sm font-semibold text-primary transition hover:border-primary"
