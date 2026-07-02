@@ -7,13 +7,17 @@ export default function PageTransitionWrapper({ children }: { children: React.Re
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <AnimatePresence mode="sync">
+    <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={pathname}
-        initial={shouldReduceMotion ? false : { opacity: 0 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={shouldReduceMotion ? undefined : { opacity: 0.98 }}
-        transition={{ duration: shouldReduceMotion ? 0 : 0.22, ease: "easeOut" }}
+        initial={shouldReduceMotion ? false : { opacity: 0.88, filter: "blur(8px)" }}
+        animate={{ opacity: 1, filter: "blur(0px)" }}
+        exit={shouldReduceMotion ? undefined : { opacity: 0.88, filter: "blur(8px)" }}
+        transition={{
+          duration: shouldReduceMotion ? 0 : 0.28,
+          ease: [0.33, 1, 0.68, 1],
+        }}
+        style={{ willChange: shouldReduceMotion ? "auto" : "opacity, filter" }}
       >
         {children}
       </motion.div>
