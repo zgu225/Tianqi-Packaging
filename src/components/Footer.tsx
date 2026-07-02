@@ -3,12 +3,7 @@
 import Link from "next/link";
 import { Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react";
 import { useLang } from "@/context/LanguageContext";
-import { allSubcategories } from "@/data/products";
 import { translations } from "@/lib/translations";
-
-const footerProductLinks = allSubcategories.slice(0, 6).map((product) => ({
-  href: `/products/${product.categorySlug}/${product.slug}`,
-}));
 
 export default function Footer() {
   const { lang } = useLang();
@@ -25,7 +20,7 @@ export default function Footer() {
   return (
     <footer className="bg-primary text-white">
       <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.2fr_0.9fr_1.2fr]">
           <div>
             <Link href="/" className="text-2xl font-bold tracking-tighter">
               Tianqi<span className="text-accent">.</span>
@@ -35,17 +30,6 @@ export default function Footer() {
               <a href="#" className="text-gray-400 hover:text-accent transition" aria-label="LinkedIn"><Linkedin size={18} /></a>
               <a href="#" className="text-gray-400 hover:text-accent transition" aria-label="Instagram"><Instagram size={18} /></a>
             </div>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-6 text-sm uppercase tracking-widest text-gray-300">{t.productsTitle}</h4>
-            <ul className="space-y-3">
-              {t.products.map((link, index) => (
-                <li key={link.name}>
-                  <Link href={footerProductLinks[index]?.href ?? link.href} className="text-gray-400 hover:text-accent text-sm transition">{link.name}</Link>
-                </li>
-              ))}
-            </ul>
           </div>
 
           <div>

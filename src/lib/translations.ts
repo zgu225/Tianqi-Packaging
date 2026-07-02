@@ -271,20 +271,10 @@ export const translations = {
 
     footer: {
       tagline: "Premium custom paper packaging for global brands. FSC-certified, export-ready, delivered worldwide from our Guangdong factory.",
-      productsTitle: "Products",
       companyTitle: "Company",
       contactTitle: "Contact",
-      products: [
-        { name: "Rigid Gift Boxes", href: "/products" },
-        { name: "Folding Cartons", href: "/products" },
-        { name: "Paper Shopping Bags", href: "/products" },
-        { name: "Mailer Boxes", href: "/products" },
-        { name: "Specialty Boxes", href: "/products" },
-        { name: "Eco Kraft Packaging", href: "/products" },
-      ],
       company: [
         { name: "About Us", href: "/about" },
-        { name: "Surface Finishes", href: "/finishes" },
         { name: "Sustainability", href: "/about#sustainability" },
         { name: "Certifications", href: "/about#certifications" },
         { name: "Contact Us", href: "/contact" },
@@ -565,20 +555,10 @@ export const translations = {
 
     footer: {
       tagline: "专为全球品牌提供高端定制纸质包装，FSC认证、出口就绪，由广东工厂发往世界各地。",
-      productsTitle: "产品",
       companyTitle: "公司",
       contactTitle: "联系我们",
-      products: [
-        { name: "硬质礼盒", href: "/products" },
-        { name: "折叠纸盒", href: "/products" },
-        { name: "纸质手提袋", href: "/products" },
-        { name: "电商邮寄盒", href: "/products" },
-        { name: "异形包装", href: "/products" },
-        { name: "环保牛皮纸包装", href: "/products" },
-      ],
       company: [
         { name: "关于我们", href: "/about" },
-        { name: "表面处理工艺", href: "/finishes" },
         { name: "可持续发展", href: "/about#sustainability" },
         { name: "资质认证", href: "/about#certifications" },
         { name: "联系我们", href: "/contact" },
