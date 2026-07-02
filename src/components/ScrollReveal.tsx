@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 interface Props {
   children: React.ReactNode;
@@ -8,13 +8,19 @@ interface Props {
 }
 
 export default function ScrollReveal({ children, className = "", delay = 0 }: Props) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 36 }}
+      initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay }}
+      transition={{
+        duration: shouldReduceMotion ? 0 : 0.45,
+        ease: "easeOut",
+        delay: shouldReduceMotion ? 0 : Math.min(delay, 0.08),
+      }}
     >
       {children}
     </motion.div>
