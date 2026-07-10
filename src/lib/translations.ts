@@ -29,9 +29,9 @@ export const translations = {
       ],
       products: {
         tagline: "Our Products",
-        h2: "Every Form. Every Finish.",
-        p: "From luxury rigid boxes to sustainable kraft mailers — we engineer packaging that fits your product, brand, and budget.",
-        learnMore: "Learn more →",
+        h2: "Three Product Families. Clear Subcategories.",
+        p: "Browse our current catalogue structure: Paper Box, Card Decks, and Stationery, each organized into focused product subcategories.",
+        learnMore: "View category →",
         browseCta: "Browse Full Product Catalogue",
         items: [
           { name: "Rigid Gift Boxes", tag: "Luxury", desc: "Magnetic closure, drawer-style, and shoulder-neck constructions wrapped in premium art paper with foil or emboss finishing." },
@@ -313,9 +313,9 @@ export const translations = {
       ],
       products: {
         tagline: "产品中心",
-        h2: "多种形态，精工细作",
-        p: "从奢华礼盒到可持续牛皮纸邮寄盒——我们专为您的产品、品牌和预算量身定制最优包装方案。",
-        learnMore: "了解详情 →",
+        h2: "三大产品目录，清晰分类",
+        p: "当前产品目录按 Paper Box、Card Decks、Stationery 三大类整理，每个大类下再细分具体产品小类。",
+        learnMore: "查看大类 →",
         browseCta: "浏览完整产品目录",
         items: [
           { name: "硬质礼盒", tag: "奢华", desc: "磁吸开合、抽屉式及肩颈款结构，外裱高档艺术纸，可选烫金或压纹工艺，彰显品牌质感。" },

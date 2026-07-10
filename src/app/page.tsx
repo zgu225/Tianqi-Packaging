@@ -4,25 +4,17 @@ import Link from "next/link";
 import FAQ from "@/components/FAQ";
 import ScrollReveal from "@/components/ScrollReveal";
 import { useLang } from "@/context/LanguageContext";
-import { allSubcategories } from "@/data/products";
+import { getLocalizedProductCategories } from "@/data/products";
 import { translations } from "@/lib/translations";
-
-const productImages = [
-  "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=700&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1586495777744-4e6232bf2919?w=700&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1607082350899-7e105aa886ae?w=700&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=700&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1605457867610-e990b192e6a4?w=700&auto=format&fit=crop",
-];
-
-const featuredProductLinks = allSubcategories.slice(0, 6).map((product) => ({
-  href: `/products/${product.categorySlug}/${product.slug}`,
-}));
 
 export default function Home() {
   const { lang } = useLang();
   const t = translations[lang].home;
+  const productCategories = getLocalizedProductCategories(lang);
+  const internalPhotoSlots =
+    lang === "cn"
+      ? ["生产车间", "样品展示区", "质检与打样"]
+      : ["Production Floor", "Sample Room", "QC & Sampling"];
 
   return (
     <main className="min-h-screen">
@@ -82,28 +74,73 @@ export default function Home() {
             <h2 className="text-4xl font-bold mt-3 mb-4 text-primary">{t.products.h2}</h2>
             <p className="text-gray-500">{t.products.p}</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {t.products.items.map((product, i) => (
-              <div key={product.name} className="group relative overflow-hidden rounded-2xl bg-stone-100 hover:shadow-2xl transition-all duration-500">
+          <div className="grid gap-6 lg:grid-cols-3">
+            {productCategories.map((category) => (
+              <Link
+                key={category.slug}
+                href={`/products#${category.slug}`}
+                className="group relative overflow-hidden rounded-2xl bg-stone-100 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl"
+              >
                 <div
-                  className="h-52 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                  style={{ backgroundImage: `url('${productImages[i]}')` }}
+                  className="h-56 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                  style={{ backgroundImage: `url('${category.image}')` }}
                 />
                 <div className="p-6">
-                  <span className="text-xs font-bold text-accent uppercase tracking-widest">{product.tag}</span>
-                  <h3 className="text-xl font-bold text-primary mt-1 mb-3">{product.name}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{product.desc}</p>
-                  <Link href={featuredProductLinks[i]?.href ?? "/products"} className="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-primary hover:text-accent transition">
+                  <span className="text-xs font-bold uppercase tracking-widest text-accent">{category.menuName}</span>
+                  <h3 className="mt-1 text-2xl font-bold text-primary">{category.name}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-500">{category.description}</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {category.subcategories.map((subcategory) => (
+                      <span
+                        key={subcategory.slug}
+                        className="rounded-full border border-gray-200 bg-white/70 px-3 py-1 text-xs font-medium text-gray-600"
+                      >
+                        {subcategory.name}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary transition group-hover:text-accent">
                     {t.products.learnMore}
-                  </Link>
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
           <div className="text-center mt-12">
             <Link href="/products" className="inline-block border-2 border-primary text-primary px-8 py-3 rounded-full font-semibold hover:bg-primary hover:text-white transition">
               {t.products.browseCta}
             </Link>
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* ── Internal Company Images Placeholder ── */}
+      <section className="bg-stone-50 py-20">
+        <ScrollReveal className="container mx-auto px-6">
+          <div className="mb-10 max-w-2xl">
+            <span className="text-sm font-bold uppercase tracking-widest text-accent">
+              {lang === "cn" ? "公司内部展示" : "Inside Tianqi"}
+            </span>
+            <h2 className="mt-3 text-3xl font-bold text-primary md:text-4xl">
+              {lang === "cn" ? "工厂、样品与生产细节" : "Factory, Samples, and Production Details"}
+            </h2>
+            <p className="mt-4 text-gray-500">
+              {lang === "cn"
+                ? "这里后续可以放置真实车间、样品间、质检和打样流程图片。"
+                : "This area is reserved for real workshop, sample room, quality control, and prototyping photos."}
+            </p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-3">
+            {internalPhotoSlots.map((slot) => (
+              <div
+                key={slot}
+                className="flex aspect-[4/3] items-end rounded-2xl border border-dashed border-gray-300 bg-gradient-to-br from-white to-stone-200 p-5"
+              >
+                <span className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white">
+                  {slot}
+                </span>
+              </div>
+            ))}
           </div>
         </ScrollReveal>
       </section>
