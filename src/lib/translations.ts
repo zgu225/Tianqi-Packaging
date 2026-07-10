@@ -262,11 +262,10 @@ export const translations = {
     },
 
     faqItems: [
-      { q: "What is your minimum order quantity (MOQ)?", a: "Our standard MOQ starts from 100 units for rigid and specialty boxes, and 500 units for folding cartons and paper bags. We can accommodate smaller trial orders for qualified buyers — reach out to discuss your specific requirements." },
-      { q: "How long does production take?", a: "Standard lead time is 15–20 business days after sample approval. Rush production (7–10 days) is available for select products. Shipping transit varies: Sea freight 25–35 days, Air freight 5–7 days, Express 3–5 days." },
-      { q: "Can I get a physical sample before placing a bulk order?", a: "Yes — and we strongly recommend it. Blank (unprinted) samples are free; you only cover freight. Custom printed samples are charged at cost and fully credited toward your bulk order invoice." },
-      { q: "What certifications does Tianqi hold?", a: "We hold FSC® Chain of Custody certification for sustainable sourcing, ISO 9001 for quality management, and SGS verification for export compliance. Full documentation is available for your procurement team upon request." },
-      { q: "Do you handle international shipping and customs?", a: "Yes. We export to 30+ countries and manage all export documentation, customs declarations, and freight coordination. We support DDP, FOB, CIF, and express delivery — whichever fits your logistics setup." },
+      { q: "What is your minimum order quantity (MOQ)?", a: "Our MOQ starts from 100 pieces. The final recommendation may vary by product structure, material, printing method, and finishing process." },
+      { q: "How long does production take?", a: "Standard bulk production takes about 20–25 days after the sample, artwork, and order details are confirmed." },
+      { q: "Can I make a sample before bulk production?", a: "Yes. We can make a digital sample before bulk production so you can check the structure, artwork placement, color direction, and overall presentation first." },
+      { q: "Can you handle international shipping and customs clearance?", a: "Yes. We can help arrange international shipping and customs clearance, including export documents and logistics coordination according to your destination and trade terms." },
     ],
 
     footer: {
@@ -546,11 +545,10 @@ export const translations = {
     },
 
     faqItems: [
-      { q: "您的最低起订量（MOQ）是多少？", a: "硬质盒和异形盒的标准起订量为100个，折叠纸盒和纸袋为500个。符合条件的买家可商议小批量试单，欢迎联系我们沟通具体需求。" },
-      { q: "生产周期是多久？", a: "样品确认后标准交期为15-20个工作日，部分产品支持加急生产（7-10天）。运输时间：海运25-35天，空运5-7天，快递3-5天。" },
-      { q: "批量下单前可以先拿到实物样品吗？", a: "可以——我们也强烈建议这样做。空白（未印刷）样品免费提供，仅需承担快递费用。定制印刷样品按成本收费，费用在批量订单发票中全额抵扣。" },
-      { q: "天启包装持有哪些认证？", a: "我们持有FSC®产销监管链认证（可持续采购）、ISO 9001质量管理体系认证及SGS出口合规验厂报告，采购团队可申请完整认证文件。" },
-      { q: "你们负责国际运输和清关吗？", a: "是的。我们已出口至30余国，全程负责出口文件、报关声明及货运协调，支持DDP、FOB、CIF及快递等多种贸易条款。" },
+      { q: "最低起订量是多少？", a: "我们的最低起订量为100个。具体建议会根据产品结构、材料、印刷方式和表面工艺有所不同。" },
+      { q: "生产周期是多久？", a: "批量生产周期通常为20-25天，从样品、设计稿和订单细节确认后开始计算。" },
+      { q: "批量下单前可以先做样品吗？", a: "可以。批量生产前可以先做数码样，方便确认结构、图案位置、颜色方向和整体展示效果。" },
+      { q: "你们可以负责国际运输和清关吗？", a: "可以。我们可以协助安排国际运输和清关，包括出口文件、物流协调，以及根据目的地和贸易条款匹配运输方案。" },
     ],
 
     footer: {
