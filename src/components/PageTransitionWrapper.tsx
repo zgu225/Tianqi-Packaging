@@ -10,14 +10,14 @@ export default function PageTransitionWrapper({ children }: { children: React.Re
     <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={pathname}
-        initial={shouldReduceMotion ? false : { opacity: 0.88, filter: "blur(8px)" }}
-        animate={{ opacity: 1, filter: "blur(0px)" }}
-        exit={shouldReduceMotion ? undefined : { opacity: 0.88, filter: "blur(8px)" }}
+        initial={shouldReduceMotion ? false : { opacity: 0.96 }}
+        animate={{ opacity: 1 }}
+        exit={shouldReduceMotion ? undefined : { opacity: 0.96 }}
         transition={{
-          duration: shouldReduceMotion ? 0 : 0.28,
-          ease: [0.33, 1, 0.68, 1],
+          duration: shouldReduceMotion ? 0 : 0.18,
+          ease: "easeOut",
         }}
-        style={{ willChange: shouldReduceMotion ? "auto" : "opacity, filter" }}
+        style={{ willChange: shouldReduceMotion ? "auto" : "opacity" }}
       >
         {children}
       </motion.div>
